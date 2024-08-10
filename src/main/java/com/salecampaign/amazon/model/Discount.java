@@ -24,8 +24,7 @@ public class Discount {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "campaign_id")
     private Campaign campaign;
-
 }

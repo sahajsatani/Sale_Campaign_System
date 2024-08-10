@@ -16,7 +16,7 @@ import java.util.List;
 public class Product {
 
     @Id
-    @Column(name = "prductid")
+    @Column(name = "productid")
     private String productId;
 
     @Column(name = "titel")
@@ -36,6 +36,7 @@ public class Product {
 
     @Column(name = "inventorycount")
     private int inventoryCount;
+
 
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
     private List<Discount> discounts = new ArrayList<>();

@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.salecampaign</groupId>
-	<artifactId>amazon</artifactId>
+	<artifactId>salecampaign</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>amazon</name>
 	<description>This is my first project</description>

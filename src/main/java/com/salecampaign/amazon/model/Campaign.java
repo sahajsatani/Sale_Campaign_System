@@ -25,8 +25,9 @@ public class Campaign {
 
     private LocalDate endDate;
 
+    private CampaignStatus Status = CampaignStatus.UPCOMING;
 
-    @OneToMany(mappedBy = "campaign", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "campaign", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Discount> discounts = new ArrayList<>();
 
     public Campaign setStartDate(String startDate) {

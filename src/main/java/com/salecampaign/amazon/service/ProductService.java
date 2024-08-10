@@ -18,7 +18,6 @@ import java.util.List;
 public class ProductService {
     @Autowired
     ProductRepo productRepo;
-
     public ResponseEntity<?> addProduct(List<Product> list) {
         try {
             productRepo.saveAll(list);
@@ -27,7 +26,6 @@ public class ProductService {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
     public ResponseEntity<?> getPageByNumber(int pageNo, int pageSize) {
         try {
             Page<Product> p = productRepo.findAll(PageRequest.of(pageNo, pageSize, Sort.by("productId")));
