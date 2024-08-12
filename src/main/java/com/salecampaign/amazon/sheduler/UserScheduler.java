@@ -148,7 +148,6 @@ public class UserScheduler {
             System.out.println("Attempt " + attempt);
         }
     }
-
     private void processStop(Object[] camI){
         long start = System.currentTimeMillis();
         System.out.println(new Date());
@@ -232,6 +231,5 @@ public class UserScheduler {
             System.out.println("Attempt " + attempt);
         }
     }
-
 }
 

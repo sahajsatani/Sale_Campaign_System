@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableAsync
 @EnableScheduling
 public class AmazonApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(AmazonApplication.class, args);
         System.out.println("API Start...");

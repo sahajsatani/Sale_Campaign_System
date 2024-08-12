@@ -14,7 +14,7 @@ public class ProductControl {
     @Autowired
     ProductService productService;
 
-    @PostMapping("/save")
+    @PostMapping("/add")
     public ResponseEntity<?> addProduct(@RequestBody List<Product> list) {
         return productService.addProduct(list);
     }

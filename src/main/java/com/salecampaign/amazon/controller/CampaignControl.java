@@ -19,7 +19,8 @@ public class CampaignControl {
     @Autowired
     CampaignService campaignService;
 
-    @PostMapping("/save")
+    //add list of campaign
+    @PostMapping("/add")
     public ResponseEntity<?> addCampaign(@RequestBody List<Campaign> list) {
         return campaignService.addCampaign(list);
     }
