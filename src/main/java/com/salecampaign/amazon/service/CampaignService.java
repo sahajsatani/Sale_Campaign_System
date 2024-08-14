@@ -3,6 +3,7 @@ package com.salecampaign.amazon.service;
 import com.salecampaign.amazon.model.Campaign;
 import com.salecampaign.amazon.model.Discount;
 import com.salecampaign.amazon.repositories.CampaignRepos;
+import org.hibernate.annotations.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class CampaignService {
@@ -19,6 +21,9 @@ public class CampaignService {
 
 //    @Async
     public ResponseEntity<?> addCampaign(List<Campaign> list) {
+        if(list.size()==0){
+            throw new NoSuchElementException("Not have any list of campaign");
+        }
         try {
             int count = 0;
             //add current campaign into discount of list

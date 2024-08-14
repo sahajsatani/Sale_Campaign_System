@@ -13,12 +13,16 @@ import org.springframework.stereotype.Service;
 
 import java.awt.*;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class ProductService {
     @Autowired
     ProductRepo productRepo;
     public ResponseEntity<?> addProduct(List<Product> list) {
+        if(list.size()==0){
+            throw new NoSuchElementException("Not have any list of products.");
+        }
         try {
             productRepo.saveAll(list);
             return new ResponseEntity<>("Products Added.", HttpStatus.CREATED);

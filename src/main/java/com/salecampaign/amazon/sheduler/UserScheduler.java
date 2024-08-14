@@ -64,6 +64,7 @@ public class UserScheduler {
         processStopRetryQueue();
     }
 
+    //this method start the campaign
     private void processStart(Object[] campI) {
         {
             long start = System.currentTimeMillis();
@@ -100,17 +101,22 @@ public class UserScheduler {
                 }
             });
 
-            campaign.setStatus(CampaignStatus.CURRENT);
-            campaignRepo.save(campaign);
+            //for add discount and update current price
             productRepo.saveAll(products);
             System.out.println("product Saved");
+
+            //for store history of updated discount and price
             historyRepo.saveAll(histories);
             System.out.println("history Saved");
+
+            campaign.setStatus(CampaignStatus.CURRENT);
+            campaignRepo.save(campaign); // for update campaign status
             System.out.println(new Date());
             long end = System.currentTimeMillis();
             System.out.println(campI[1] + "Compaign Start.. in " + (end - start));
         }
     }
+    //this method retry to store that changes those not performed in process start method
     private void processStartRetryQueue() {
         int attempt=0;
         while (attempt<3 && !retryQueue.isEmpty()){
@@ -148,6 +154,8 @@ public class UserScheduler {
             System.out.println("Attempt " + attempt);
         }
     }
+
+    //this method stop the campaign
     private void processStop(Object[] camI){
         long start = System.currentTimeMillis();
         System.out.println(new Date());
@@ -181,17 +189,23 @@ public class UserScheduler {
                 retryQueue.add(new ProductRetryInfo((String) i[1],(int) i[0]));
             }
         });
-        campaign.setStatus(CampaignStatus.PAST);
-        campaignRepo.save(campaign);
-
+        //for add discount and update current price
         productRepo.saveAll(products);
         System.out.println("product Saved");
+
+        //for store history of updated discount and price
         historyRepo.saveAll(histories);
         System.out.println("history Saved");
+
         System.out.println(new Date());
+
+        campaign.setStatus(CampaignStatus.PAST);
+        campaignRepo.save(campaign); // for update campaign status
+
         long end = System.currentTimeMillis();
         System.out.println(camI[1] + "Compaign Stop.. in "+(end-start));
     }
+    //this method retry to store that changes those not performed in process start method
     private void processStopRetryQueue() {
         int attempt=0;
         while (attempt<3 && !retryQueue.isEmpty()){
