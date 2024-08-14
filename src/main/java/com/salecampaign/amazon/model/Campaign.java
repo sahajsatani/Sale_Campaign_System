@@ -1,5 +1,6 @@
 package com.salecampaign.amazon.model;
 
+import com.salecampaign.amazon.model.enums.CampaignStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

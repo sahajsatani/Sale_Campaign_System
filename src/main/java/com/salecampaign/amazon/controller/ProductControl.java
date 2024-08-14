@@ -19,10 +19,17 @@ public class ProductControl {
         return productService.addProduct(list);
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<?> updateProduct(@RequestBody List<Product> list){return productService.updateProduct(list);}
+
     @GetMapping("/getPage")
     public ResponseEntity<?> getPageByNumber(
             @RequestParam(value = "pageNo", defaultValue = "3", required = false) int pageNo,
             @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize) {
         return productService.getPageByNumber(pageNo, pageSize);
     }
+
+    @DeleteMapping("/remove")
+    public  ResponseEntity<?> deleteProduct(@RequestBody List<Product> list){return productService.deleteProduct(list);}
 }
+

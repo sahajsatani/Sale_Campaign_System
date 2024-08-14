@@ -1,7 +1,7 @@
 package com.salecampaign.amazon.sheduler;
 
 import com.salecampaign.amazon.model.Campaign;
-import com.salecampaign.amazon.model.CampaignStatus;
+import com.salecampaign.amazon.model.enums.CampaignStatus;
 import com.salecampaign.amazon.model.History;
 import com.salecampaign.amazon.model.Product;
 import com.salecampaign.amazon.repositories.CampaignRepos;

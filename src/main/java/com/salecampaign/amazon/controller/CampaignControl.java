@@ -24,4 +24,5 @@ public class CampaignControl {
     public ResponseEntity<?> addCampaign(@RequestBody List<Campaign> list) {
         return campaignService.addCampaign(list);
     }
+
 }

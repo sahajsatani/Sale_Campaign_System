@@ -3,6 +3,7 @@ package com.salecampaign.amazon.service;
 import com.salecampaign.amazon.model.Campaign;
 import com.salecampaign.amazon.model.Discount;
 import com.salecampaign.amazon.repositories.CampaignRepos;
+import jakarta.transaction.Transactional;
 import org.hibernate.annotations.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ public class CampaignService {
     CampaignRepos campaignRepo;
 
 //    @Async
+    @Transactional
     public ResponseEntity<?> addCampaign(List<Campaign> list) {
         if(list.size()==0){
             throw new NoSuchElementException("Not have any list of campaign");
