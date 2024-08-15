@@ -18,4 +18,5 @@ public interface DiscountRepo extends JpaRepository<Discount, Integer> {
     @Modifying
     @Query(value = "delete from tbldiscount where product_id = :id",nativeQuery = true)
     public void deleteAllByProduct(@Param(value = "id") String list);
+
 }

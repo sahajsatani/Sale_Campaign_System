@@ -2,8 +2,11 @@ package com.salecampaign.amazon.controller;
 
 import com.salecampaign.amazon.model.Product;
 import com.salecampaign.amazon.service.ProductService;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +16,11 @@ import java.util.List;
 public class ProductControl {
     @Autowired
     ProductService productService;
+
+    @GetMapping("/getCsrf")
+    public CsrfToken add(HttpServletRequest request){
+        return (CsrfToken) request.getAttribute("_csrf");
+    }
 
     @PostMapping("/add")
     public ResponseEntity<?> addProduct(@RequestBody List<Product> list) {
