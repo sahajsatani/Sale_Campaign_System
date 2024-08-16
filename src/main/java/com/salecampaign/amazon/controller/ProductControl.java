@@ -2,7 +2,6 @@ package com.salecampaign.amazon.controller;
 
 import com.salecampaign.amazon.model.Product;
 import com.salecampaign.amazon.service.ProductService;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +19,10 @@ public class ProductControl {
     @GetMapping("/getCsrf")
     public CsrfToken add(HttpServletRequest request){
         return (CsrfToken) request.getAttribute("_csrf");
+    }
+    @GetMapping("/ok")
+    public String getOk(HttpServletRequest request){
+        return "Hey Sahaj "+request.getSession().getId();
     }
 
     @PostMapping("/add")
