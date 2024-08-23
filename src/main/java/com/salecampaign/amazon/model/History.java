@@ -15,6 +15,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class History {
 
+    //Field
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "historyId")
@@ -29,6 +30,7 @@ public class History {
     @Column(name = "afterDiscountPrice")
     private int afterDiscountPrice;
 
+    //Mapping
     @ManyToOne
     @JoinColumn(name = "productId")
     private Product product;

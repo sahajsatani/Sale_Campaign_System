@@ -66,7 +66,10 @@ public class JwtUtils {
     //authenticate jwt token by secret key
     public boolean validateJwtToken(String authToken){
         try {
-            Jwts.parser().verifyWith((SecretKey) key()).build().parseSignedClaims(authToken);
+            Jwts.parser()
+                    .verifyWith((SecretKey) key())
+                    .build()
+                    .parseSignedClaims(authToken);
             return true;
         }catch (MalformedJwtException e){
             logger.error("Invalid JWT token: {}",e.getMessage());

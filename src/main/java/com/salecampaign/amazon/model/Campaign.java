@@ -28,6 +28,7 @@ public class Campaign {
 
     private CampaignStatus Status = CampaignStatus.UPCOMING;
 
+    //Mapping
     @OneToMany(mappedBy = "campaign", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Discount> discounts = new ArrayList<>();
 

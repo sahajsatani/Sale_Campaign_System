@@ -5,28 +5,28 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "tbldiscount")
+@Table(name = "tblseller")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Discount {
+public class Seller {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int discountId;
+    private int sellerId;
 
-    private int discount;
+    private String username;
+
+    private String password;
+
+    private String productCategory;
 
 
     //Mapping
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @OneToMany(mappedBy = "seller",cascade = CascadeType.ALL)
+    private List<Product> products;
 
-    @ManyToOne
-    @JoinColumn(name = "campaign_id")
-    private Campaign campaign;
+    private int totalProduct;
 }

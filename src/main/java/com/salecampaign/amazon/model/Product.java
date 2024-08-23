@@ -15,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Product {
 
+    //field
     @Id
     @Column(name = "productid")
     private String productId;
@@ -38,11 +39,16 @@ public class Product {
     private int inventoryCount;
 
 
+    //Mapping
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
     private List<Discount> discounts = new ArrayList<>();
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<History> histories = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "sellerId")
+    private Seller seller;
 
     public Product(String productId) {
         this.productId = productId;

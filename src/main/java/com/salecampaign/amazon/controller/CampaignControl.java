@@ -24,4 +24,5 @@ public class CampaignControl {
 
     @PutMapping("/update")
     public ResponseEntity<?> updateCampaign(@RequestBody List<Campaign> list){return campaignService.updateCampaign(list);}
+
 }
