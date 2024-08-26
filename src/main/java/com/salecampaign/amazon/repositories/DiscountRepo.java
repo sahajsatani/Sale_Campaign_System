@@ -1,7 +1,6 @@
 package com.salecampaign.amazon.repositories;
 
-import com.salecampaign.amazon.model.Discount;
-import jakarta.persistence.criteria.CriteriaBuilder;
+import com.salecampaign.amazon.entity.Discount;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

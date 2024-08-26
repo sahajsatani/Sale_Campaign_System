@@ -1,10 +1,10 @@
-package com.salecampaign.amazon.sheduler;
+package com.salecampaign.amazon.scheduler;
 
-import com.salecampaign.amazon.model.Campaign;
-import com.salecampaign.amazon.model.enums.CampaignStatus;
-import com.salecampaign.amazon.model.History;
-import com.salecampaign.amazon.model.Product;
-import com.salecampaign.amazon.repositories.CampaignRepos;
+import com.salecampaign.amazon.entity.Campaign;
+import com.salecampaign.amazon.entity.enums.CampaignStatus;
+import com.salecampaign.amazon.entity.History;
+import com.salecampaign.amazon.entity.Product;
+import com.salecampaign.amazon.repositories.CampaignRepo;
 import com.salecampaign.amazon.repositories.DiscountRepo;
 import com.salecampaign.amazon.repositories.HistoryRepo;
 import com.salecampaign.amazon.repositories.ProductRepo;
@@ -38,7 +38,7 @@ public class UserScheduler {
     DiscountRepo discountRepo;
 
     @Autowired
-    CampaignRepos campaignRepo;
+    CampaignRepo campaignRepo;
 
     private final Queue<ProductRetryInfo> retryQueue = new ConcurrentLinkedQueue<>();
 

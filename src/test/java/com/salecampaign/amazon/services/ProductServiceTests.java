@@ -1,16 +1,10 @@
-package com.salecampaign.amazon.service;
+package com.salecampaign.amazon.services;
 
-import com.salecampaign.amazon.model.Product;
+import com.salecampaign.amazon.entity.Product;
 import com.salecampaign.amazon.repositories.ProductRepo;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,6 +1,6 @@
-package com.salecampaign.amazon.model;
+package com.salecampaign.amazon.entity;
 
-import com.salecampaign.amazon.model.enums.CampaignStatus;
+import com.salecampaign.amazon.entity.enums.CampaignStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

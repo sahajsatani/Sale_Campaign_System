@@ -1,15 +1,13 @@
-package com.salecampaign.amazon.service;
+package com.salecampaign.amazon.services;
 
-import com.salecampaign.amazon.model.Campaign;
-import com.salecampaign.amazon.model.Discount;
-import com.salecampaign.amazon.repositories.CampaignRepos;
+import com.salecampaign.amazon.entity.Campaign;
+import com.salecampaign.amazon.entity.Discount;
+import com.salecampaign.amazon.repositories.CampaignRepo;
 import com.salecampaign.amazon.repositories.DiscountRepo;
 import jakarta.transaction.Transactional;
-import org.hibernate.annotations.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -20,7 +18,7 @@ import java.util.Objects;
 @Service
 public class CampaignService {
     @Autowired
-    CampaignRepos campaignRepo;
+    CampaignRepo campaignRepo;
 
     @Autowired
     DiscountRepo discountRepo;

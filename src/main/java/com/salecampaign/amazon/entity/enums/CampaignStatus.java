@@ -1,4 +1,4 @@
-package com.salecampaign.amazon.model.enums;
+package com.salecampaign.amazon.entity.enums;
 
 public enum CampaignStatus {
     UPCOMING,

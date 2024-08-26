@@ -1,4 +1,4 @@
-package com.salecampaign.amazon.sheduler;
+package com.salecampaign.amazon.scheduler;
 
 import lombok.Data;
 

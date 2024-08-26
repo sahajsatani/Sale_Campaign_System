@@ -1,8 +1,7 @@
 package com.salecampaign.amazon.controller;
 
-import com.salecampaign.amazon.model.Campaign;
-import com.salecampaign.amazon.service.CampaignService;
-import jakarta.persistence.Entity;
+import com.salecampaign.amazon.entity.Campaign;
+import com.salecampaign.amazon.services.CampaignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/campaign")
-public class CampaignControl {
+public class CampaignController {
 
     @Autowired
     CampaignService campaignService;

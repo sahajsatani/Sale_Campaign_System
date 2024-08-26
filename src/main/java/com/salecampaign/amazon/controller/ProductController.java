@@ -1,7 +1,7 @@
 package com.salecampaign.amazon.controller;
 
-import com.salecampaign.amazon.model.Product;
-import com.salecampaign.amazon.service.ProductService;
+import com.salecampaign.amazon.entity.Product;
+import com.salecampaign.amazon.services.ProductService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/product")
-public class ProductControl {
+public class ProductController {
     @Autowired
     ProductService productService;
 

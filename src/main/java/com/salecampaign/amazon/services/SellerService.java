@@ -1,7 +1,7 @@
-package com.salecampaign.amazon.service;
+package com.salecampaign.amazon.services;
 
-import com.salecampaign.amazon.model.Product;
-import com.salecampaign.amazon.model.Seller;
+import com.salecampaign.amazon.entity.Product;
+import com.salecampaign.amazon.entity.Seller;
 import com.salecampaign.amazon.repositories.SellerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

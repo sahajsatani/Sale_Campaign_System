@@ -1,6 +1,6 @@
 package com.salecampaign.amazon.repositories;
 
-import com.salecampaign.amazon.model.Seller;
+import com.salecampaign.amazon.entity.Seller;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

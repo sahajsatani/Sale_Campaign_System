@@ -1,10 +1,9 @@
-package com.salecampaign.amazon.model;
+package com.salecampaign.amazon.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.query.derived.AnonymousTupleBasicEntityIdentifierMapping;
 
 import java.time.LocalDate;
 
