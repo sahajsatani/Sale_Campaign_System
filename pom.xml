@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.salecampaign</groupId>
-	<artifactId>salecampaign</artifactId>
+	<artifactId>salescampaign</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>amazon</name>
+	<name>salescampaign</name>
 	<description>This is my first project</description>
 
 
