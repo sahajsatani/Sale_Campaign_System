@@ -41,5 +41,9 @@ public class Campaign {
         this.endDate = LocalDate.parse(endDate).plusDays(1);
         return this;
     }
+    public Campaign setNormalEndDate(String endDate) {
+        this.endDate = LocalDate.parse(endDate);
+        return this;
+    }
 
 }

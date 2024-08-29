@@ -23,17 +23,15 @@ public class ProductService {
     @Autowired
     DiscountRepo discountRepo;
 
-    @Autowired
-    HistoryRepo historyRepo;
 
     @Transactional
-    public ResponseEntity<?> addProduct(List<Product> list) {
+    public ResponseEntity<?> registerProduct(List<Product> list) {
         if (list.size() == 0) {
-            throw new NoSuchElementException("Not have any list of products.");
+            throw new NoSuchElementException("Not have any list of products to register.");
         }
         try {
             productRepo.saveAll(list);
-            return new ResponseEntity<>("Products Added.", HttpStatus.CREATED);
+            return new ResponseEntity<>("Products added.", HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -42,28 +40,28 @@ public class ProductService {
     @Transactional
     public ResponseEntity<?> getPageByNumber(int pageNo, int pageSize) {
         try {
-            Page<Product> p = productRepo.findAll(PageRequest.of(pageNo, pageSize, Sort.by("productId")));
+            Page<Product> p = productRepo.findAll(PageRequest.of(pageNo,pageSize, Sort.by("productId").ascending()));
             return new ResponseEntity<>(p, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @Transactional
-    public ResponseEntity<?> updateProduct(List<Product> list) {
-        try {
-            int count = 0;
-            for (Product product : list) {
-                if (productRepo.existsById(product.getProductId())) {
-                    productRepo.save(product);
-                    count++;
-                }
-            }
-            return new ResponseEntity<>(count + " number of product updated.", HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//    @Transactional
+//    public ResponseEntity<?> editProduct(List<Product> list) {
+//        try {
+//            int count = 0;
+//            for (Product product : list) {
+//                if (productRepo.existsById(product.getProductId())) {
+//                    productRepo.save(product);
+//                    count++;
+//                }
+//            }
+//            return new ResponseEntity<>(count + " number of product updated.", HttpStatus.OK);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
     @Transactional
     public ResponseEntity<?> deleteProduct(List<Product> list) {

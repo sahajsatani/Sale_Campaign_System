@@ -38,7 +38,6 @@ public class Product {
     @Column(name = "inventorycount")
     private int inventoryCount;
 
-
     //Mapping
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
     private List<Discount> discounts = new ArrayList<>();
@@ -47,8 +46,8 @@ public class Product {
     private List<History> histories = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "sellerId")
-    private Seller seller;
+    @JoinColumn(name = "adminId")
+    private Admin admin;
 
     public Product(String productId) {
         this.productId = productId;

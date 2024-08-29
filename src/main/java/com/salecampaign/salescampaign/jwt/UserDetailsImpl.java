@@ -1,6 +1,6 @@
 package com.salecampaign.salescampaign.jwt;
 
-import com.salecampaign.salescampaign.entity.Seller;
+import com.salecampaign.salescampaign.entity.Admin;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,23 +9,23 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class UserDetailsImpl implements UserDetails {
-    private Seller seller;
-    public UserDetailsImpl(Seller seller){
-        this.seller = seller;
+    private Admin admin;
+    public UserDetailsImpl(Admin admin){
+        this.admin = admin;
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority(seller.getRole().toString()));
+        return Collections.singleton(new SimpleGrantedAuthority(admin.getRole().toString()));
     }
 
     @Override
     public String getPassword() {
-        return seller.getPassword();
+        return admin.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return seller.getUsername();
+        return admin.getUsername();
     }
 
     @Override

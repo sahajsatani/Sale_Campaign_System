@@ -2,6 +2,7 @@ package com.salecampaign.salescampaign.services;
 
 import com.salecampaign.salescampaign.entity.Campaign;
 import com.salecampaign.salescampaign.entity.Discount;
+import com.salecampaign.salescampaign.entity.enums.CampaignStatus;
 import com.salecampaign.salescampaign.repositories.CampaignRepo;
 import com.salecampaign.salescampaign.repositories.DiscountRepo;
 import jakarta.transaction.Transactional;
@@ -33,6 +34,8 @@ public class CampaignService {
             int count = 0;
             //add current campaign into discount of list
             for (Campaign i : list) {
+                System.out.println(i.getStartDate());
+                System.out.println(i.getEndDate());
                 if (i.getStartDate().isAfter(LocalDate.now()) && i.getEndDate().isAfter(i.getStartDate())) {
                     List<Discount> discountsList = i.getDiscounts();
                     discountsList.forEach(j -> {
@@ -53,40 +56,34 @@ public class CampaignService {
     }
 
     @Transactional
-    public ResponseEntity<?> updateCampaign(List<Campaign> list) {
-        try{
-            StringBuilder st = new StringBuilder("Campaign updated");
-            List<Campaign> list1 = list.stream().map((campaign -> {
-                Campaign campaign1 = campaignRepo.findById(campaign.getCampaignId()).get();
-                if (campaign1 != null) {
-                    if (campaign1.getStartDate().isBefore(LocalDate.now())
-                            || campaign.getStartDate().isBefore(LocalDate.now())
-                            || campaign.getStartDate().isAfter(campaign.getEndDate())
-                            || campaign.getStartDate()==campaign.getEndDate()
-                            || Objects.equals(campaign.getStartDate(), LocalDate.now())) {
-                        campaign.setStartDate(campaign1.getStartDate().toString());
-                        st.append(" start date was not updated");
+    public ResponseEntity<?> updateCampaign(Campaign campaign) {
+        try {
+            Campaign campaign1 = campaignRepo.findById(campaign.getCampaignId()).get();
+            if (campaign1 != null) {
+                if (campaign1.getStatus() == CampaignStatus.UPCOMING) {
+                    if (campaign.getStartDate().isAfter(LocalDate.now()) && campaign.getEndDate().isAfter(campaign.getStartDate())) {
+                        campaign.setDiscounts(null);
+                        campaignRepo.save(campaign);
+                        return new ResponseEntity<>("Campaign updated.", HttpStatus.OK);
                     }
-                    if (campaign.getEndDate().isBefore(LocalDate.now())
-                        || campaign.getEndDate().isBefore(campaign.getStartDate())
-                    ) {
-                        campaign.setEndDate(campaign1.getEndDate().toString());
-                        st.append(" end date was not updated");
-                    }else{
-                        campaign.setEndDate(campaign.getEndDate().plusDays(0).toString());
+                    return new ResponseEntity<>("Campaign not changed.", HttpStatus.OK);
+                } else if (campaign1.getStatus() == CampaignStatus.CURRENT) {
+                    if (campaign.getEndDate().isAfter(LocalDate.now())) {
+                        campaign.setDiscounts(null);
+                        campaign1.setNormalEndDate(String.valueOf(campaign.getEndDate()));
+                        campaign1.setTitle(campaign.getTitle());
+                        campaignRepo.save(campaign1);
+                        return new ResponseEntity<>("Campaign updated.", HttpStatus.OK);
                     }
-                    campaign.setDiscounts(null);
-                    return campaign;
-                } else return null;
-            })).toList();
-
-            if (null != campaignRepo.saveAll(list1)) {
-                return new ResponseEntity<>(st, HttpStatus.OK);
+                    return new ResponseEntity<>("Campaign not changed.", HttpStatus.OK);
+                } else {
+                    return new ResponseEntity<>("Campaign was expired.", HttpStatus.OK);
+                }
             } else {
                 return new ResponseEntity<>("Not updated campaign.", HttpStatus.OK);
             }
-        }catch (Exception e){
-            return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

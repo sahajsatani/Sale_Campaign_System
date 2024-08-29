@@ -17,6 +17,7 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
+    //Security config practice
 //    @GetMapping("/getCsrf")
 //    public CsrfToken add(HttpServletRequest request){
 //        return (CsrfToken) request.getAttribute("_csrf");
@@ -28,13 +29,13 @@ public class ProductController {
 //        return "Hey Sahaj "+request.getSession().getId();
 //    }
 
-    @PostMapping("/add")
-    public ResponseEntity<?> addProduct(@RequestBody List<Product> list) {
-        return productService.addProduct(list);
+    @PostMapping("/register")
+    public ResponseEntity<?> registerProduct(@RequestBody List<Product> list) {
+        return productService.registerProduct(list);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<?> updateProduct(@RequestBody List<Product> list){return productService.updateProduct(list);}
+//    @PutMapping("/edit")
+//    public ResponseEntity<?> editProduct(@RequestBody List<Product> list){return productService.editProduct(list);}
 
     @GetMapping("/getPage")
     public ResponseEntity<?> getPageByNumber(

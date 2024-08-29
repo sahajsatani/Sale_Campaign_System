@@ -16,12 +16,12 @@ public class CampaignController {
     CampaignService campaignService;
 
     //add list of campaign
-    @PostMapping("/add")
+    @PostMapping("/register")
     public ResponseEntity<?> addCampaign(@RequestBody List<Campaign> list) {
         return campaignService.addCampaign(list);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<?> updateCampaign(@RequestBody List<Campaign> list){return campaignService.updateCampaign(list);}
+    @PutMapping("/edit")
+    public ResponseEntity<?> updateCampaign(@RequestBody Campaign campaign){return campaignService.updateCampaign(campaign);}
 
 }
