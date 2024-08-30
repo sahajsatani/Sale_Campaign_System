@@ -60,6 +60,7 @@ public class CampaignService {
         try {
             Campaign campaign1 = campaignRepo.findById(campaign.getCampaignId()).get();
             if (campaign1 != null) {
+
                 if (campaign1.getStatus() == CampaignStatus.UPCOMING) {
                     if (campaign.getStartDate().isAfter(LocalDate.now()) && campaign.getEndDate().isAfter(campaign.getStartDate())) {
                         campaign.setDiscounts(null);
@@ -67,7 +68,8 @@ public class CampaignService {
                         return new ResponseEntity<>("Campaign updated.", HttpStatus.OK);
                     }
                     return new ResponseEntity<>("Campaign not changed.", HttpStatus.OK);
-                } else if (campaign1.getStatus() == CampaignStatus.CURRENT) {
+                }
+                else if (campaign1.getStatus() == CampaignStatus.CURRENT) {
                     if (campaign.getEndDate().isAfter(LocalDate.now())) {
                         campaign.setDiscounts(null);
                         campaign1.setNormalEndDate(String.valueOf(campaign.getEndDate()));
@@ -76,10 +78,13 @@ public class CampaignService {
                         return new ResponseEntity<>("Campaign updated.", HttpStatus.OK);
                     }
                     return new ResponseEntity<>("Campaign not changed.", HttpStatus.OK);
-                } else {
+                }
+                else {
                     return new ResponseEntity<>("Campaign was expired.", HttpStatus.OK);
                 }
-            } else {
+
+            }
+            else {
                 return new ResponseEntity<>("Not updated campaign.", HttpStatus.OK);
             }
         } catch (Exception e) {

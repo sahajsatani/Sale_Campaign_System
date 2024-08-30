@@ -66,6 +66,8 @@ public class ProductService {
     @Transactional
     public ResponseEntity<?> deleteProduct(List<Product> list) {
         try {
+            if(list.isEmpty())
+                throw new NoSuchElementException("Not have any list of product to delete");
             List<String> list1 = list.stream().map(Product::getProductId).toList();
             for (String i : list1){
                 discountRepo.deleteAllByProduct(i);
