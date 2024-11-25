@@ -1,6 +1,6 @@
 package com.salecampaign.salescampaign.services;
 
-import com.salecampaign.salescampaign.entity.Product;
+import com.salecampaign.salescampaign.model.Product;
 import com.salecampaign.salescampaign.repositories.ProductRepo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

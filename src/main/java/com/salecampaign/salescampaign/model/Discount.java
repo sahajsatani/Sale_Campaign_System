@@ -1,4 +1,4 @@
-package com.salecampaign.salescampaign.entity;
+package com.salecampaign.salescampaign.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,9 +14,7 @@ public class Discount {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int discountId;
-
     private int discount;
-
 
     //Mapping
     @ManyToOne

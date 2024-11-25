@@ -1,6 +1,6 @@
 package com.salecampaign.salescampaign.repositories;
 
-import com.salecampaign.salescampaign.entity.Discount;
+import com.salecampaign.salescampaign.model.Discount;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -13,9 +13,11 @@ import java.util.List;
 public interface DiscountRepo extends JpaRepository<Discount, Integer> {
     @Query(value = "select discount,product_id from tbldiscount d where d.campaign_id = ?1", nativeQuery = true)
     List<Object[]> getDiscountsByCampId(int cid);
+    @Query(value = "select * from tbldiscount d where d.campaign_id = ?1", nativeQuery = true)
+    List<Discount> findAllByCampaign(int cid);
 
     @Modifying
     @Query(value = "delete from tbldiscount where product_id = :id",nativeQuery = true)
-    public void deleteAllByProduct(@Param(value = "id") String list);
+    void deleteAllByProducts(@Param(value = "id") String list);
 
 }

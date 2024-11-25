@@ -1,4 +1,4 @@
-package com.salecampaign.salescampaign.entity.enums;
+package com.salecampaign.salescampaign.model.enums;
 
 public enum CampaignStatus {
     UPCOMING,

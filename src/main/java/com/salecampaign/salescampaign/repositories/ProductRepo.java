@@ -1,6 +1,6 @@
 package com.salecampaign.salescampaign.repositories;
 
-import com.salecampaign.salescampaign.entity.Product;
+import com.salecampaign.salescampaign.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

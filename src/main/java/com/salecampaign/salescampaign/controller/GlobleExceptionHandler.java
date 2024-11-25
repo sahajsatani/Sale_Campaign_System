@@ -17,5 +17,4 @@ public class GlobleExceptionHandler {
     public ResponseEntity<?> NullPointerException(NullPointerException ex){
         return new ResponseEntity<>(ex.toString(), HttpStatus.BAD_REQUEST);
     }
-
 }

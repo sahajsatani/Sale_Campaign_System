@@ -1,4 +1,4 @@
-package com.salecampaign.salescampaign.entity;
+package com.salecampaign.salescampaign.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,13 +19,10 @@ public class History {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "historyId")
     private int historyId;
-
     @Column(name = "date")
     private LocalDate date;
-
     @Column(name = "beforeDiscountPrice")
     private int beforeDiscountPrice;
-
     @Column(name = "afterDiscountPrice")
     private int afterDiscountPrice;
 
