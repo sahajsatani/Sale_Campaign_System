@@ -14,6 +14,7 @@ public class Discount {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int discountId;
+    @Column(nullable = false)
     private int discount;
 
     //Mapping

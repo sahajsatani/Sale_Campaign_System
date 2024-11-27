@@ -19,22 +19,23 @@ public class Product {
     @Id
     @Column(name = "productid")
     private String productId;
-    @Column(name = "title")
+    @Column(name = "title",nullable = false)
     private String title;
     @Column(name = "description")
     private String description;
-    @Column(name = "mrp")
+    @Column(name = "mrp",nullable = false)
     private int mrp;
-    @Column(name = "currentprice")
+    @Column(name = "currentprice",nullable = false)
     private int currentPrice;
     @Column(name = "discount")
     private int discount;
-    @Column(name = "inventorycount")
+    @Column(name = "inventorycount",nullable = false)
     private int inventoryCount;
 
     //Mapping
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
     private List<Discount> discounts = new ArrayList<>();
+
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<History> histories = new ArrayList<>();
     public Product(String productId) {

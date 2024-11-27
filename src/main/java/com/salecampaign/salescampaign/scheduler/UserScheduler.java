@@ -37,7 +37,7 @@ public class UserScheduler {
     @Autowired
     CampaignRepo campaignRepo;
     private final Queue<ProductRetryDTO> retryQueue = new ConcurrentLinkedQueue<>();
-    @Scheduled(cron = "0 34 19 * * *")
+    @Scheduled(cron = "0 0 0 * * *")
     @Async
     @Transactional
     public void campaignStart() {
@@ -47,7 +47,7 @@ public class UserScheduler {
         processStartRetryQueue();
     }
 
-    @Scheduled(cron = "0 43 19 * * *")
+    @Scheduled(cron = "0 0 0 * * *")
     @Async
     @Transactional
     public void campaignStop() {
@@ -98,7 +98,7 @@ public class UserScheduler {
             campaignRepo.save(campaign); // for update campaign status
             System.out.println(new Date());
             long end = System.currentTimeMillis();
-            System.out.println(campaign.getTitle() + " Compaign Start.. in " + (end - start));
+            System.out.println(campaign.getTitle() + " Compaign Start.. in " + (end - start) + " Milisecond");
         }
     }
     //this method stop the campaign
@@ -142,7 +142,7 @@ public class UserScheduler {
         campaign.setStatus(CampaignStatus.PAST);
         campaignRepo.save(campaign); // for update campaign status
         long end = System.currentTimeMillis();
-        System.out.println(campaign.getTitle() + " Compaign Stop.. in " + (end - start));
+        System.out.println(campaign.getTitle() + " Compaign Stop.. in " + (end - start)+ " Milisecond");
     }
     //this method retry to store that changes those not performed in process start method
     private void processStartRetryQueue() {

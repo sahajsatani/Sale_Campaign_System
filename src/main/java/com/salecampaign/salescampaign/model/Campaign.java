@@ -19,14 +19,18 @@ public class Campaign {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int campaignId;
+    @Column(nullable = false)
     private String title;
+    @Column(nullable = false)
     private LocalDate startDate;
+    @Column(nullable = false)
     private LocalDate endDate;
     private CampaignStatus Status = CampaignStatus.UPCOMING;
 
     //Mapping
     @OneToMany(mappedBy = "campaign", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Discount> discounts = new ArrayList<>();
+
     public Campaign setStartDate(String startDate) {
         this.startDate = LocalDate.parse(startDate);
         return this;

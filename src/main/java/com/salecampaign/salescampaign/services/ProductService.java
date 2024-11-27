@@ -52,7 +52,7 @@ public class ProductService {
                 discountRepo.deleteAllByProducts(i);
             }
             productRepo.deleteAllById(list1);
-            return new ResponseEntity<>("Products are deleted", HttpStatus.OK);
+            return new ResponseEntity<>("Products and history's are deleted", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

@@ -26,24 +26,5 @@ public class ProductController {
     public  ResponseEntity<?> deleteProduct(@RequestBody List<Product> list){
         return productService.deleteProduct(list);
     }
-
-
-
-
-    //    @PutMapping("/edit")
-//    public ResponseEntity<?> editProduct(@RequestBody List<Product> list){return productService.editProduct(list);}
-
-    //Security config practice
-//    @GetMapping("/getCsrf")
-//    public CsrfToken add(HttpServletRequest request){
-//        return (CsrfToken) request.getAttribute("_csrf");
-//    }
-//
-//    @PreAuthorize("hasRole('USER')")
-//    @GetMapping("/ok")
-//    public String getOk(HttpServletRequest request){
-//        return "Hey Sahaj "+request.getSession().getId();
-//    }
-
 }
 

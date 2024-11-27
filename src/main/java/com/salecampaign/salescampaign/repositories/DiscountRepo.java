@@ -11,13 +11,10 @@ import java.util.List;
 
 @Repository
 public interface DiscountRepo extends JpaRepository<Discount, Integer> {
-    @Query(value = "select discount,product_id from tbldiscount d where d.campaign_id = ?1", nativeQuery = true)
-    List<Object[]> getDiscountsByCampId(int cid);
     @Query(value = "select * from tbldiscount d where d.campaign_id = ?1", nativeQuery = true)
     List<Discount> findAllByCampaign(int cid);
 
     @Modifying
     @Query(value = "delete from tbldiscount where product_id = :id",nativeQuery = true)
     void deleteAllByProducts(@Param(value = "id") String list);
-
 }

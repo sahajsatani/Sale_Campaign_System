@@ -1,4 +1,4 @@
-package com.salecampaign.salescampaign.controller;
+package com.salecampaign.salescampaign.exceptionHandler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +15,10 @@ public class GlobleExceptionHandler {
     }
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<?> NullPointerException(NullPointerException ex){
+        return new ResponseEntity<>(ex.toString(), HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<?> NullPointerException(Exception ex){
         return new ResponseEntity<>(ex.toString(), HttpStatus.BAD_REQUEST);
     }
 }

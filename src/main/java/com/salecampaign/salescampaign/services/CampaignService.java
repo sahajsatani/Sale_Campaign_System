@@ -21,10 +21,7 @@ import java.util.NoSuchElementException;
 public class CampaignService {
     @Autowired
     CampaignRepo campaignRepo;
-    @Autowired
-    DiscountRepo discountRepo;
 
-//     @Async
     @Transactional
     public ResponseEntity<?> addCampaign(List<Campaign> list) {
         if (list.isEmpty()) {
@@ -56,7 +53,6 @@ public class CampaignService {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
     @Transactional
     public ResponseEntity<?> updateCampaign(Campaign campaign) {
         try {
